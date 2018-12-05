@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class GameControlComponent implements OnInit {
 
-  private num: number;
+  private num: number = 0;
   private refSI: any;
 
   // output property
@@ -21,10 +21,10 @@ export class GameControlComponent implements OnInit {
   startGame() {
 
     // reset the counting
-    clearInterval(this.refSI);
+    // clearInterval(this.refSI);
 
     // Reset counting
-    this.num = 0;
+    // this.num = 0;
 
     // count +1 every second
     this.refSI = setInterval(() => {
