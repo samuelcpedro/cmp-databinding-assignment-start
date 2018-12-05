@@ -7,7 +7,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class GameControlComponent implements OnInit {
 
-  num = 0;
+  private num: number;
+  private refSI: any;
 
   // output property
   @Output() startBtClicked = new EventEmitter<number>();
@@ -18,12 +19,25 @@ export class GameControlComponent implements OnInit {
   }
 
   startGame() {
-    setInterval(() => {
-      // console.log('Before num in GameControlComponent');
+
+    // reset the counting
+    clearInterval(this.refSI);
+
+    // Reset counting
+    this.num = 0;
+
+    // count +1 every second
+    this.refSI = setInterval(() => {
+      // console.log('1 - Before num in GameControlComponent');
       // console.log(this.num);
       this.startBtClicked.emit(++this.num);
-      // console.log('After num in GameControlComponent');
+      // console.log('4 - After num in GameControlComponent');
       // console.log(this.num);
     }, 1000);
+  }
+
+  // End game reset the counting
+  endGame() {
+    clearInterval(this.refSI);
   }
 }
